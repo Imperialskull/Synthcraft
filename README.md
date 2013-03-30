@@ -86,6 +86,12 @@ This will continue to get updated as the mod continues to grow
 we are finding new synthetic materials and other gaps where we
 would like to see increased gameplay.
 
+Aetherwind and Arenacraft Integration
+=====================================
+
+as of MC 1.5.1 I am also planning on integrating one of my other mods (initially Aetherwind)
+and ArenaCraft which is being developed by Captain_Narco.
+
 
 
 
