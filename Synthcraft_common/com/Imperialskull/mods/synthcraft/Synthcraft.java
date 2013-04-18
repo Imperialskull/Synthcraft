@@ -51,6 +51,7 @@ public class Synthcraft
     //BLOCK DECLARATION
     public static Block BlockPlastic;
     public static Block BlockGlowstick;
+    public static Block BlockPlexiglass;
     //END BLOCK DECLARATION
     
     
@@ -97,6 +98,7 @@ public class Synthcraft
     {
         BlockPlastic = new BlockPlastic(500).setUnlocalizedName("imperialskull.synthcraft.BlockPlastic");
         BlockGlowstick = new BlockGlowstick(501, Material.air).setUnlocalizedName("imperialskull.synthcraft.BlockGlowstick");
+        BlockPlexiglass = new BlockPlexiglass(502, Material.glass, false).setUnlocalizedName("imperialskull.synthcraft.BlockPlexiglass");
     }
     
     //where all blocks are added to GameRegistry
@@ -104,6 +106,7 @@ public class Synthcraft
     {
         GameRegistry.registerBlock(BlockPlastic,ItemPlasticBlock.class,"Imperialskull.synthcraft.PlasticBlock");
         GameRegistry.registerBlock(BlockGlowstick,"Imperialskull.synthcraft.BlockGlowstick");
+        GameRegistry.registerBlock(BlockPlexiglass,ItemPlexiglassBlock.class,"Imperialskull.synthcraft.BlockPlexiglass");
         
     }
     
@@ -112,10 +115,13 @@ public class Synthcraft
     {
         for (int i = 0; i < 16; i++) {
             LanguageRegistry.addName(new ItemStack(BlockPlastic, 1, i), PlasticBlockColours[new ItemStack(BlockPlastic,1,i).getItemDamage()]+" Plastic Block");
+            LanguageRegistry.addName(new ItemStack(BlockPlexiglass, 1, i), PlasticBlockColours[new ItemStack(BlockPlastic,1,i).getItemDamage()]+" Plexiglass");
+            
        
         }
         
         LanguageRegistry.addName(BlockGlowstick, "Glowstick");
+        LanguageRegistry.addName(BlockPlexiglass,"PlexiGlass");
         }
     
     }
