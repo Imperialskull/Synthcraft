@@ -3,6 +3,7 @@ package com.Imperialskull.mods.synthcraft;
 import java.util.logging.Level;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -49,6 +50,7 @@ public class Synthcraft
     
     //BLOCK DECLARATION
     public static Block BlockPlastic;
+    public static Block BlockGlowstick;
     //END BLOCK DECLARATION
     
     
@@ -94,12 +96,14 @@ public class Synthcraft
     public void InitAllBlocks()
     {
         BlockPlastic = new BlockPlastic(500).setUnlocalizedName("imperialskull.synthcraft.BlockPlastic");
+        BlockGlowstick = new BlockGlowstick(501, Material.air).setUnlocalizedName("imperialskull.synthcraft.BlockGlowstick");
     }
     
     //where all blocks are added to GameRegistry
     public void RegisterTheBlocks()
     {
         GameRegistry.registerBlock(BlockPlastic,ItemPlasticBlock.class,"Imperialskull.synthcraft.PlasticBlock");
+        GameRegistry.registerBlock(BlockGlowstick,"Imperialskull.synthcraft.BlockGlowstick");
         
     }
     
@@ -110,6 +114,8 @@ public class Synthcraft
             LanguageRegistry.addName(new ItemStack(BlockPlastic, 1, i), PlasticBlockColours[new ItemStack(BlockPlastic,1,i).getItemDamage()]+" Plastic Block");
        
         }
+        
+        LanguageRegistry.addName(BlockGlowstick, "Glowstick");
         }
     
     }

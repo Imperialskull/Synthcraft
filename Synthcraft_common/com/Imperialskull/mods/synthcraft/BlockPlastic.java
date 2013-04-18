@@ -7,7 +7,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockOre;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -23,6 +22,7 @@ public class BlockPlastic extends Block {
         super(blockID, Material.wood);
         this.setLightOpacity(15);
         this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setResistance(17000000000F);
     }
     @SideOnly(Side.CLIENT)
     @Override
