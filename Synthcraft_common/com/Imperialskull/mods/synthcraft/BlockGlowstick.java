@@ -21,7 +21,7 @@ public class BlockGlowstick extends Block
     public BlockGlowstick(int id, Material par2Material)
     {
         super(id, par2Material);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(Synthcraft.CreativeTabSynthcraft);
         this.setLightValue(1F);
         this.setLightOpacity(0);
 

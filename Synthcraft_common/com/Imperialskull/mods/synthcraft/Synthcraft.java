@@ -1,5 +1,6 @@
 package com.Imperialskull.mods.synthcraft;
 
+import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraft.block.Block;
@@ -41,12 +42,21 @@ public class Synthcraft
 {
     
     public static final String modid = "Synthcraft";
+    // CONFIG SETUP DEC
+    public static Configuration config;
+    public static File configDir;
     
-    //INTEGER DECLARATION FOR BLOCKS
+    //INTEGER DECLARATION FOR BLOCKS (CFG)
     
-    //public static integer blocknamehere = integer **
+    public static int BlockPlasticID = 1000;
+    public static int BlockGlowstickID = 1001;
+    public static int BlockPlexiglassID = 1002;
+    public static int BlockGlowingplexiglassID = 1003;
     
     //END INTEGER DECLARATION OF BLOCKS
+    
+    //INTEGER DECLARATION FOR ITEMS (CFG)
+    //END INETEGER DECLARATION FOR ITEMS
     
     //BLOCK DECLARATION
     public static Block BlockPlastic;
@@ -54,6 +64,9 @@ public class Synthcraft
     public static Block BlockPlexiglass;
     public static Block BlockGlowingplexiglass;
     //END BLOCK DECLARATION
+    
+    //CREATIVETAB
+    public static CreativeTabs CreativeTabSynthcraft;
     
     
     private static final String[] PlasticBlockColours = {
@@ -77,12 +90,28 @@ public class Synthcraft
     
     @PreInit
     public void PreInit(FMLPreInitializationEvent event){
+        configDir = event.getModConfigurationDirectory();
+        config = new Configuration(event.getSuggestedConfigurationFile());
+        config.load();
+        //BLOCKS
+        BlockPlasticID = config.getBlock("Plastic Block ID",BlockPlasticID).getInt();
+        BlockGlowstickID = config.getBlock("Glowstick ID",BlockGlowstickID).getInt();
+        BlockPlexiglassID = config.getBlock("Plexiglass ID", BlockPlexiglassID).getInt();
+        BlockGlowingplexiglassID = config.getBlock("Plexiglow ID", BlockGlowingplexiglassID).getInt();
+        //ITEMS
+        //CONFIG END
+        config.save();
         
     }
     
     @Init
     public void Init(FMLInitializationEvent event)
     {
+        if(event.getSide() == Side.CLIENT)
+        {
+            registerCreativeTab();
+            }
+        
         InitAllBlocks();
         RegisterTheBlocks();
         NameTheBlocks();
@@ -94,13 +123,18 @@ public class Synthcraft
         
     }
     
+    public void registerCreativeTab(){
+        CreativeTabSynthcraft = new com.Imperialskull.mods.synthcraft.client.CreativeTabSynthcraft("Imperialskull.synthcraft");
+        LanguageRegistry.instance().addStringLocalization("itemGroup." + CreativeTabSynthcraft.getTabLabel(), CommonProxy.modName);
+}
+    
     //tells forge to initialize the block
     public void InitAllBlocks()
     {
-        BlockPlastic = new BlockPlastic(500).setUnlocalizedName("imperialskull.synthcraft.BlockPlastic");
-        BlockGlowstick = new BlockGlowstick(501, Material.air).setUnlocalizedName("imperialskull.synthcraft.BlockGlowstick");
-        BlockPlexiglass = new BlockPlexiglass(502, Material.glass, false).setUnlocalizedName("imperialskull.synthcraft.BlockPlexiglass");
-        BlockGlowingplexiglass = new BlockGlowingplexiglass(503,Material.glass, null, false).setUnlocalizedName("imperialskull.synthcraft.BlockGlowingplexiglass");
+        BlockPlastic = new BlockPlastic(BlockPlasticID).setUnlocalizedName("imperialskull.synthcraft.BlockPlastic");
+        BlockGlowstick = new BlockGlowstick(BlockGlowstickID, Material.air).setUnlocalizedName("imperialskull.synthcraft.BlockGlowstick");
+        BlockPlexiglass = new BlockPlexiglass(BlockPlexiglassID, Material.glass, false).setUnlocalizedName("imperialskull.synthcraft.BlockPlexiglass");
+        BlockGlowingplexiglass = new BlockGlowingplexiglass(BlockGlowingplexiglassID,Material.glass, null, false).setUnlocalizedName("imperialskull.synthcraft.BlockGlowingplexiglass");
     }
     
     //where all blocks are added to GameRegistry

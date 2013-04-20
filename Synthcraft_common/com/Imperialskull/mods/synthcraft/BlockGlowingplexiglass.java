@@ -19,7 +19,7 @@ public class BlockGlowingplexiglass extends BlockBreakable
     protected BlockGlowingplexiglass(int par1, Material par2Material,
             Material par3Material, boolean par3) {
         super(par1, "glass", par2Material, par3);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(Synthcraft.CreativeTabSynthcraft);
         this.setHardness(1F);
         this.setResistance(17000000000F);
         this.setLightOpacity(0);

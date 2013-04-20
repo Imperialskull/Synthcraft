@@ -21,7 +21,7 @@ public class BlockPlastic extends Block {
     public BlockPlastic(int blockID){
         super(blockID, Material.wood);
         this.setLightOpacity(15);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(Synthcraft.CreativeTabSynthcraft);
         this.setHardness(1F);
         this.setResistance(17000000000F);
     }

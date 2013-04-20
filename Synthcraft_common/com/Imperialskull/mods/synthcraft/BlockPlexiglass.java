@@ -20,7 +20,7 @@ public class BlockPlexiglass extends BlockBreakable
     public BlockPlexiglass(int par1, Material par2Material, boolean par3)
     {
         super(par1, "glass", par2Material, par3);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(Synthcraft.CreativeTabSynthcraft);
         this.setHardness(1F);
         this.setResistance(17000000000F);
         this.setLightOpacity(0);
