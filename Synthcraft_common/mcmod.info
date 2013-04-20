@@ -1,0 +1,21 @@
+[
+{
+  "modid": "Synthcraft",
+  "name": "Synthcraft",
+  "description": "A world of synthetic possibilities",
+  "version": "A-1.0",
+  "url": "https://github.com/Imperialskull/Synthcraft/",
+  "updateUrl": "",
+  "authorList": [
+    "Imperialskull"
+  ],
+  "credits": "To: Wuppy for your tutorials, Mojang, Forge team, 
+  and my wife and artist Cyanidess",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

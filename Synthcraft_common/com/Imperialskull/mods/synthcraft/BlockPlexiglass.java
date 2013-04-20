@@ -81,9 +81,13 @@ public class BlockPlexiglass extends BlockBreakable
         return super.shouldSideBeRendered(iblockaccess, i, j, k, 1 - l);
       }
     
-
+    @Override
+    public int damageDropped(int par1)
+    {
+        return par1;
+    }
     
-    public void registerIcons(IconRegister par1IconRegister)
+     public void registerIcons(IconRegister par1IconRegister)
     {
      this.plexiColours[0] = par1IconRegister.registerIcon("synthcraft:Imperialskull.synthcraft.BlockPlexiGlass");
      this.plexiColours[1] = par1IconRegister.registerIcon("synthcraft:Imperialskull.synthcraft.BlockPlexiOrange");

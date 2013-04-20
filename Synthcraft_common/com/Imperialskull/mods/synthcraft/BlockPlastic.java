@@ -22,6 +22,7 @@ public class BlockPlastic extends Block {
         super(blockID, Material.wood);
         this.setLightOpacity(15);
         this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setHardness(1F);
         this.setResistance(17000000000F);
     }
     @SideOnly(Side.CLIENT)
