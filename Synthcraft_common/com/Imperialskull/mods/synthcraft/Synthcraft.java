@@ -52,10 +52,13 @@ public class Synthcraft
     public static int BlockGlowstickID = 1001;
     public static int BlockPlexiglassID = 1002;
     public static int BlockGlowingplexiglassID = 1003;
-    
+    public static int BlockPlexidoorID = 1004;
     //END INTEGER DECLARATION OF BLOCKS
     
     //INTEGER DECLARATION FOR ITEMS (CFG)
+    public static int ItemPlexidoorID = 2000;
+
+            
     //END INETEGER DECLARATION FOR ITEMS
     
     //BLOCK DECLARATION
@@ -63,7 +66,14 @@ public class Synthcraft
     public static Block BlockGlowstick;
     public static Block BlockPlexiglass;
     public static Block BlockGlowingplexiglass;
+    public static Block BlockPlexidoor;
+
     //END BLOCK DECLARATION
+    
+    //ITEM DECLARATION
+    public static Item ItemPlexidoor;
+
+    //END ITEM DECLARATION
     
     //CREATIVETAB
     public static CreativeTabs CreativeTabSynthcraft;
@@ -98,7 +108,10 @@ public class Synthcraft
         BlockGlowstickID = config.getBlock("Glowstick ID",BlockGlowstickID).getInt();
         BlockPlexiglassID = config.getBlock("Plexiglass ID", BlockPlexiglassID).getInt();
         BlockGlowingplexiglassID = config.getBlock("Plexiglow ID", BlockGlowingplexiglassID).getInt();
+        BlockPlexidoorID = config.getBlock("Plexidoor ID",BlockPlexidoorID).getInt();
         //ITEMS
+        ItemPlexidoorID = config.getItem("Plexidoor item ID", ItemPlexidoorID).getInt();
+
         //CONFIG END
         config.save();
         
@@ -115,6 +128,8 @@ public class Synthcraft
         InitAllBlocks();
         RegisterTheBlocks();
         NameTheBlocks();
+        InitAllItems();
+        NameTheItems();
     }
 
     @PostInit
@@ -135,6 +150,8 @@ public class Synthcraft
         BlockGlowstick = new BlockGlowstick(BlockGlowstickID, Material.air).setUnlocalizedName("imperialskull.synthcraft.BlockGlowstick");
         BlockPlexiglass = new BlockPlexiglass(BlockPlexiglassID, Material.glass, false).setUnlocalizedName("imperialskull.synthcraft.BlockPlexiglass");
         BlockGlowingplexiglass = new BlockGlowingplexiglass(BlockGlowingplexiglassID,Material.glass, null, false).setUnlocalizedName("imperialskull.synthcraft.BlockGlowingplexiglass");
+        BlockPlexidoor = new BlockPlexidoor(BlockPlexidoorID, Material.glass, false).setUnlocalizedName("imperialskull.synthcraft.BlockPlexidoor");
+
     }
     
     //where all blocks are added to GameRegistry
@@ -144,6 +161,9 @@ public class Synthcraft
         GameRegistry.registerBlock(BlockGlowstick,"Imperialskull.synthcraft.BlockGlowstick");
         GameRegistry.registerBlock(BlockPlexiglass,ItemPlexiglassBlock.class,"Imperialskull.synthcraft.BlockPlexiglass");
         GameRegistry.registerBlock(BlockGlowingplexiglass,ItemGlowingplexiglass.class,"Imperialskull.synthcraft.BlockGlowingplexiglass");
+        GameRegistry.registerBlock(BlockPlexidoor,"Imperialskull.synthcraft.BlockPlexidoor");
+
+        
         
     }
     
@@ -154,6 +174,9 @@ public class Synthcraft
             LanguageRegistry.addName(new ItemStack(BlockPlastic, 1, i), PlasticBlockColours[new ItemStack(BlockPlastic,1,i).getItemDamage()]+" Plastic Block");
             LanguageRegistry.addName(new ItemStack(BlockPlexiglass, 1, i), PlasticBlockColours[new ItemStack(BlockPlexiglass,1,i).getItemDamage()]+" Plexiglass");
             LanguageRegistry.addName(new ItemStack(BlockGlowingplexiglass, 1, i), PlasticBlockColours[new ItemStack(BlockGlowingplexiglass,1,i).getItemDamage()]+" Plexiglow");
+            LanguageRegistry.addName(new ItemStack(BlockPlexidoor, 1, i), PlasticBlockColours[new ItemStack(BlockPlexidoor,1,i).getItemDamage()]+" Plexidoor");
+            
+            
             
        
         }
@@ -161,6 +184,15 @@ public class Synthcraft
         LanguageRegistry.addName(BlockGlowstick, "Glowstick");
 
         }
+    public void InitAllItems(){
+       ItemPlexidoor = new ItemPlexidoor(ItemPlexidoorID).setUnlocalizedName("Imperialskull.synthcraft.ItemPlexidoor");
+        
+    }
+    
+    public void NameTheItems(){
+        LanguageRegistry.addName(ItemPlexidoor, "plexidoor");
+
+    }
     
     }
     
