@@ -13,6 +13,11 @@ public class CommonProxy
     public void registerRenderThings(){
     
     }
+
+    public void preInit() {
+        // TODO Auto-generated method stub
+        
+    }
     
 }
 

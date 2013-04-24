@@ -3,9 +3,13 @@ package com.Imperialskull.mods.synthcraft;
 import java.io.File;
 import java.util.logging.Level;
 
+
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityList;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
@@ -30,9 +34,12 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
+
+import com.Imperialskull.mods.synthcraft.client.EntityPlexiboat;
 
 
 @Mod(modid = "Synthcraft", name = "Synthcraft", version = "A-1.0")
@@ -57,9 +64,11 @@ public class Synthcraft
     
     //INTEGER DECLARATION FOR ITEMS (CFG)
     public static int ItemPlexidoorID = 2000;
-
-            
+    public static int ItemPlexiboatID = 2001;
+  
     //END INETEGER DECLARATION FOR ITEMS
+    //ENTITY
+  
     
     //BLOCK DECLARATION
     public static Block BlockPlastic;
@@ -72,6 +81,8 @@ public class Synthcraft
     
     //ITEM DECLARATION
     public static Item ItemPlexidoor;
+    public static Item ItemPlexiboat;
+ 
 
     //END ITEM DECLARATION
     
@@ -100,9 +111,13 @@ public class Synthcraft
     
     @PreInit
     public void PreInit(FMLPreInitializationEvent event){
+        
+        proxy.preInit();
+        
         configDir = event.getModConfigurationDirectory();
         config = new Configuration(event.getSuggestedConfigurationFile());
         config.load();
+
         //BLOCKS
         BlockPlasticID = config.getBlock("Plastic Block ID",BlockPlasticID).getInt();
         BlockGlowstickID = config.getBlock("Glowstick ID",BlockGlowstickID).getInt();
@@ -111,9 +126,18 @@ public class Synthcraft
         BlockPlexidoorID = config.getBlock("Plexidoor ID",BlockPlexidoorID).getInt();
         //ITEMS
         ItemPlexidoorID = config.getItem("Plexidoor item ID", ItemPlexidoorID).getInt();
-
+        ItemPlexiboatID = config.getItem("Plexiboat item ID", ItemPlexiboatID).getInt();
+       
+        
         //CONFIG END
         config.save();
+        
+        
+        int entityID;
+        entityID=EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityPlexiboat.class,"Plexiboat",entityID);
+        EntityList.addMapping(EntityPlexiboat.class,"Plexiboat",entityID,0x515838, 0x868F6B);
+        
         
     }
     
@@ -167,6 +191,8 @@ public class Synthcraft
         
     }
     
+
+    
     //SET ALL THE NAMES
     public void NameTheBlocks()
     {
@@ -186,11 +212,25 @@ public class Synthcraft
         }
     public void InitAllItems(){
        ItemPlexidoor = new ItemPlexidoor(ItemPlexidoorID).setUnlocalizedName("Imperialskull.synthcraft.ItemPlexidoor");
+       ItemPlexiboat = new ItemPlexiboat(ItemPlexiboatID).setUnlocalizedName("Imperialskull.synthcraft.ItemPlexiboat");
+       
         
     }
+
+
     
     public void NameTheItems(){
         LanguageRegistry.addName(ItemPlexidoor, "plexidoor");
+        LanguageRegistry.addName(ItemPlexiboat, "Plexiboat");
+     
+        proxy.registerRenderThings();   
+
+        
+
+          
+        
+
+
 
     }
     
