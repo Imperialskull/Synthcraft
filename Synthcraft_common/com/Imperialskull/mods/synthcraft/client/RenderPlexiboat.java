@@ -26,8 +26,13 @@ public class RenderPlexiboat extends Render {
     /**
 * Returns the texture's file path as a String.
 */
-
     public String getTexture()
+    {
+        return "mods/synthcraft/item/plexiboat.png";
+    }
+
+
+    public String setTexture()
     {
      return "/mods/synthcraft/item/plexiboat.png";
     }

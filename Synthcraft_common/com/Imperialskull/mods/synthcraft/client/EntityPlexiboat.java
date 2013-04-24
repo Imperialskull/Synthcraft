@@ -42,17 +42,10 @@ public class EntityPlexiboat extends Entity {
    
     }
     
-    @SideOnly(Side.CLIENT)
-
-    /**
-* Returns the texture's file path as a String.
-*/
-    @Override
-    public String getTexture()
-    {
-     return "/mods/synthcraft/item/boat.png";
-    }
-
+public String getTexture()
+{
+    return "mods/synthcraft/item/plexiboat.png";
+}
 
      
 
